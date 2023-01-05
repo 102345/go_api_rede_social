@@ -13,7 +13,7 @@ func CriarPerfil(w http.ResponseWriter, r *http.Request) {
 
 func BuscarPerfis(w http.ResponseWriter, r *http.Request) {
 
-	descricao := strings.ToLower(r.URL.Query().Get("perfil"))
+	descricao := strings.ToLower(r.URL.Query().Get("descricao"))
 
 	db, erro := banco.Conectar()
 	if erro != nil {
