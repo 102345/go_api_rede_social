@@ -20,7 +20,7 @@ func NovoRepositorioDePerfis(db *sql.DB) *Perfis {
 func (repositorio Perfis) Criar(perfil modelos.Perfil) (uint64, error) {
 
 	statement, erro := repositorio.db.Prepare(
-		"insert into perfis(descricao)values(?,?,?,?)",
+		"insert into perfis(descricao)values(?)",
 	)
 	if erro != nil {
 		return 0, erro
@@ -107,7 +107,7 @@ func (repositorio Perfis) BuscarPorID(ID uint64) (modelos.Perfil, error) {
 // Atualizar altera as informações do perfil pelo seu ID
 func (repositorio Perfis) Atualizar(ID uint64, perfil modelos.Perfil) error {
 
-	statement, erro := repositorio.db.Prepare("update perfis set descricao = ? where id = ?")
+	statement, erro := repositorio.db.Prepare("update perfis set descricao = ? where perfil_id = ?")
 
 	if erro != nil {
 		return erro
@@ -126,7 +126,7 @@ func (repositorio Perfis) Atualizar(ID uint64, perfil modelos.Perfil) error {
 // Deletar exclui as informações do perfil
 func (repositorio Perfis) Deletar(ID uint64) error {
 
-	statement, erro := repositorio.db.Prepare("delete from perfis where id = ?")
+	statement, erro := repositorio.db.Prepare("delete from perfis where perfil_id = ?")
 
 	if erro != nil {
 		return erro
