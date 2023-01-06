@@ -141,3 +141,22 @@ func (repositorio Perfis) Deletar(ID uint64) error {
 	return nil
 
 }
+
+// DeletarPerfilDeUsuario permite que delete um perfil de um usuário
+func (repositorio Perfis) DeletarPerfilDeUsuario(usuarioID, perfilID uint64) error {
+
+	statement, erro := repositorio.db.Prepare(
+		"delete from perfisusuarios where usuario_id = ? and perfil_id = ?",
+	)
+	if erro != nil {
+		return erro
+	}
+
+	defer statement.Close()
+
+	if _, erro := statement.Exec(usuarioID, perfilID); erro != nil {
+		return erro
+	}
+
+	return nil
+}

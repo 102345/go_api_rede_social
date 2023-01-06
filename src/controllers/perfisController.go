@@ -177,3 +177,6 @@ func DeletarPerfil(w http.ResponseWriter, r *http.Request) {
 	respostas.JSON(w, http.StatusNoContent, nil)
 
 }
+
+func DeletarPerfilDeUsuario(w http.ResponseWriter, r *http.Request) {
+}

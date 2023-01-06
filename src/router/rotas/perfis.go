@@ -36,4 +36,10 @@ var rotasPerfis = []Rota{
 		Funcao:             controllers.DeletarPerfil,
 		RequerAutenticacao: false,
 	},
+	{
+		Uri:                "/perfis/{usuarioId}/deletar-perfil",
+		Metodo:             http.MethodPost,
+		Funcao:             controllers.DeletarPerfilDeUsuario,
+		RequerAutenticacao: true,
+	},
 }

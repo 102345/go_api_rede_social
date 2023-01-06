@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS publicacoes;
 DROP TABLE IF EXISTS seguidores;
 DROP TABLE IF EXISTS usuarios;
 DROP TABLE IF EXISTS perfis;
+DROP TABLE IF EXISTS perfisusuarios;
 
 CREATE TABLE perfis(
     perfil_id int auto_increment primary key,
@@ -42,4 +43,17 @@ CREATE TABLE publicacoes(
     ON DELETE CASCADE,
     curtidas int default 0,
     criadaEm timestamp default current_timestamp()
+)ENGINE=INNODB;
+
+
+CREATE TABLE perfissusuarios(
+    usuario_id int not null,
+    FOREIGN KEY (usuario_id)
+    REFERENCES usuarios(id)
+    ON DELETE CASCADE,
+    perfil_id int not null,
+    FOREIGN KEY (perfil_id)
+    REFERENCES perfis(perfil_id)
+    ON DELETE CASCADE,
+    primary key(usuario_id,perfil_id)
 )ENGINE=INNODB;
