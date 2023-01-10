@@ -1,6 +1,8 @@
 package modelos
 
-import "errors"
+import (
+	"errors"
+)
 
 func (perfil *Perfil) Validar() error {
 
