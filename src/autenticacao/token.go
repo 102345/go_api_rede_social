@@ -12,7 +12,7 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 )
 
-//CriarToken retorna um token assinado com as permissões do usuario
+// CriarToken retorna um token assinado com as permissões do usuario
 func CriarToken(usuarioID uint64) (string, error) {
 
 	permissoes := jwt.MapClaims{}
@@ -26,7 +26,7 @@ func CriarToken(usuarioID uint64) (string, error) {
 
 }
 
-//ValidarToken verifica se token passado pela requisição é válido
+// ValidarToken verifica se token passado pela requisição é válido
 func ValidarToken(r *http.Request) error {
 
 	tokenString := extrairToken(r)
@@ -55,7 +55,7 @@ func ExtrairUsuarioID(r *http.Request) (uint64, error) {
 	if permissoes, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
 		usuarioID, erro := strconv.ParseUint(fmt.Sprintf("%.0f", permissoes["usuarioId"]), 10, 64)
 		if erro != nil {
-			return 0, erro
+			return 0, errors.New("Erro inesperado de extração de usuário!")
 		}
 
 		return usuarioID, nil
