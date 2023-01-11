@@ -46,7 +46,7 @@ CREATE TABLE publicacoes(
 )ENGINE=INNODB;
 
 
-CREATE TABLE perfissusuarios(
+CREATE TABLE perfisusuarios(
     usuario_id int not null,
     FOREIGN KEY (usuario_id)
     REFERENCES usuarios(id)

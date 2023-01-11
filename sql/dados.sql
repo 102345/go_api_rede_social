@@ -20,5 +20,5 @@ values
 ("Publicação do Usuário 2","Essa é a publicação do usuario 2! Oba!",2),
 ("Publicação do Usuário 3","Essa é a publicação do usuario 3! Oba!",3);
 
-insert into devbook.perfissusuarios(usuario_id,perfil_id)values(1,1);
-insert into devbook.perfissusuarios(usuario_id,perfil_id)values(2,2);
+insert into devbook.perfisusuarios(usuario_id,perfil_id)values(1,1);
+insert into devbook.perfisusuarios(usuario_id,perfil_id)values(2,2);

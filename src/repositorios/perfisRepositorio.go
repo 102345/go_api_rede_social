@@ -156,7 +156,7 @@ func (repositorio Perfis) Deletar(ID uint64) error {
 func (repositorio Perfis) VincularPerfilDeUsuario(perfilUsuario modelos.PerfilUsuario) error {
 
 	statement, erro := repositorio.db.Prepare(
-		"insert into perfissusuarios(usuario_id,perfil_id)values(?,?)",
+		"insert into perfisusuarios(usuario_id,perfil_id)values(?,?)",
 	)
 	if erro != nil {
 		return erro
@@ -195,7 +195,7 @@ func (repositorio Perfis) BuscarPerfilDoUsuario(usuarioID uint64) (modelos.Perfi
 
 	linhas, erro := repositorio.db.Query(
 		`select pe.perfil_id, pe.descricao 
-							from perfissusuarios pu 
+							from perfisusuarios pu 
 							inner join perfis pe on pu.perfil_id = pe.perfil_id
 							where pu.usuario_id = ?`,
 		usuarioID,
